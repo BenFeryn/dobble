@@ -27,7 +27,7 @@ public class SymboleG extends Element{
 	public SymboleG(Point o) {
 		super(o);
 		selectionne = false;
-		// TODO Auto-generated constructor stub
+		//TODO Générer l'image
 	}
 	
 	/* Accesseur */
