@@ -36,6 +36,8 @@ public class Fenetre extends JFrame{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setResizable(false);
 		setLocationRelativeTo(null);
+		
+		setContentPane(fond);
 	}
 	
 	/* Accesseurs */
