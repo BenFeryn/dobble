@@ -8,7 +8,6 @@ import javax.swing.JPanel;
  * Cette classe hérite de JPanel.
  * Elle représente le fond de la fenêtre.
  * Là où nous dessinerons les cartes
- * @see Carte
  * @see CarteG
  * 
  * @author Camille

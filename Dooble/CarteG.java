@@ -7,14 +7,9 @@ import java.awt.Point;
  * @author Camille
  * @version 1.0
  */
-public class CarteG{
+public class CarteG extends Element{
 
 	/* Attributs */
-	
-	/**
-	 * Point correspondant au centre de la carte 
-	 */
-	private Point centre;
 	
 	private int rayon;
 	
@@ -42,7 +37,7 @@ public class CarteG{
 	 * 		Rayon de la carte
 	 */
 	public CarteG(Carte c,Point o, int r){
-		centre = new Point(o);
+		super(o);
 		rayon = r;
 		
 		symboles = new SymboleG[Csts.SYMBOLES_CARTE];
@@ -52,15 +47,6 @@ public class CarteG{
 	/* Accesseurs */
 	
 	/* GET */
-	
-	/**
-	 * Retourne le Point du centre de la carte
-	 * @return Point
-	 * 		Centre de la carte
-	 */
-	public Point getCentre(){
-		return centre;
-	}
 	
 	/**
 	 * Retourn le rayon de la carte
@@ -81,15 +67,6 @@ public class CarteG{
 	}
 	
 	/* SET */
-	
-	/**
-	 * Changer le centre de la carte
-	 * @param o Point
-	 * 		Nouveau centre
-	 */
-	public void setCentre(Point o){
-		centre = new Point(o);
-	}
 	
 	/**
 	 * Changer le rayon de la carte
@@ -116,7 +93,7 @@ public class CarteG{
 	 * @param g Graphics
 	 */
 	public void afficher(Graphics g) {
-		g.drawOval((int)(this.getCentre().getX()-rayon), (int)(g.getClipBounds().getHeight()-this.getCentre().getY()-rayon ), (rayon*2), (rayon*2));
+		g.drawOval((int)(getCentre().getX()-rayon), (int)(g.getClipBounds().getHeight()-getCentre().getY()-rayon ), (rayon*2), (rayon*2));
 	}
 
 }
