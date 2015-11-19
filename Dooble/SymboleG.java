@@ -1,3 +1,4 @@
+import java.awt.Image;
 import java.awt.Point;
 
 /**
@@ -10,9 +11,36 @@ import java.awt.Point;
  */
 public class SymboleG extends Element{
 
+	/* Attributs */
+	
+	private Symbole symbole;
+
+	private Image img;
+
+	private int largeur;
+	private int hauteur;
+	
+	private boolean selectionne;
+
+	/* Constructeur */
+	
 	public SymboleG(Point o) {
 		super(o);
+		selectionne = false;
 		// TODO Auto-generated constructor stub
 	}
-
+	
+	/* Accesseur */
+	
+	/* GET */
+	
+	public boolean getSelectionne(){
+		return selectionne;
+	}
+	
+	/* SET */
+	
+	public void setSelectionne(boolean b){
+		selectionne = b;
+	}
 }

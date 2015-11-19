@@ -1,7 +1,7 @@
-import java.awt.Image;
-
 /**
  * Cette classe répresente un symbole dans une carte.
+ * Un symbole est une image.
+ * Le nom de l'image sera sous la forme Symbole_n
  * @see Carte
  * 
  * @version 1.0
@@ -11,8 +11,12 @@ public class Symbole {
 	
 	/* Attributs */
 		
-		//TODO A supprimer à l'implémentation des images(Temporaire)
-		private int temp;
+		/**
+		 * Cette valeur permettra de trouver le lien de l'image
+		 * Peut être modifiée
+		 * @see setValeurSymbole(int t)
+		 */
+		private int valeurSymbole;
 		
 		/**
 		 * Le lien vers l'image du symbole.
@@ -21,46 +25,36 @@ public class Symbole {
 		 */
 		private String lienImg;
 		
-		/**
-		 * Image créée à partir du lien. 
-		 * Sera modifiée si le lien est modifié.
-		 * @see setLienImg(String str)
-		 */
-		private Image img;
-		
-		//TODO A supprimer à l'implémentation des images(Temporaire)
-		public Symbole(int i) {
-			temp = i;
-		}
 		
 		/* Constructeur */
 		
+
 		/**
-		 * Instanciera un symbole avec un lien vers une image(Internet ou sur le PC) 
+		 * Instanciera un symbole avec la valeur donnée grâce au nom de l'image qui sera "Symbole_valeurSymbole"
 		 * @param img String
 		 * 		Lien vers l'image <strong>existante</strong>	
 		 */
-		public Symbole(String img){
-			//TODO créer l'image à partir du lien donné et gérer les exceptions
+		public Symbole(int i) {
+			valeurSymbole = i;
+			lienImg = new String("Symbole_"+valeurSymbole);
 		}
 		
-
-		
 		public Symbole(Symbole s) {
-			//TODO Supprimer une fois l'implémentation des images faite
-			this.temp = s.temp;
-			
+			this.valeurSymbole = s.valeurSymbole;
 			this.lienImg = s.lienImg;
-			this.img = s.img;
 		}
 	
 	/* Accesseurs */
 		
 		/* GET */
 
-			//TODO A supprimer à l'implémentation des images(Temporaire)
-			public int getTemp(){
-				return temp;
+			/**
+			 * Récupérer la valeur du symbole
+			 * @return int
+			 * 		valeur du symbole
+			 */
+			public int getValeurSymbole(){
+				return valeurSymbole;
 			}
 			
 			/**
@@ -71,31 +65,17 @@ public class Symbole {
 			public String getLienImg(){
 				return lienImg;
 			}
-			
-			/**
-			 * Retourne l'instance l'Image du symbole
-			 * @return img Image
-			 * 		Inctance de l'Image
-			 */
-			public Image getImage(){
-				return img;
-			}
 		
 		/* SET */
 			
-			//TODO A supprimer à l'implémentation des images(Temporaire)
-			public void setTemp(int t){
-				temp = t;
-			}
-			
 			/**
-			 * Remplacera le lien de l'image et L'Image
-			 * @param str
-			 * 		Lien vers nouvelle image
+			 * Changer la valeur du symbole et le lien
+			 * @param t int
+			 * 		Nouvelle valeur symbole
 			 */
-			public void setLienImg(String str){
-				lienImg = str;
-				//TODO Instancier la nouvelle image à partir du lien et gérer les exceptions
+			public void setValeurSymbole(int t){
+				valeurSymbole = t;
+				lienImg = new String("Symbole_"+valeurSymbole);
 			}
 		
 	/* Méthodes */
@@ -108,17 +88,15 @@ public class Symbole {
 			 * 		Si c'est egale ou non
 			 */
 			public boolean equals(Symbole s){
-				return this.temp == s.temp;
-				//TODO modifier pour les images
+				return this.valeurSymbole == s.valeurSymbole;
 			}
 			
 			/**
-			 * Redéfinition de la méthode toStriing.
+			 * Redéfinition de la méthode toString.
 			 * Retour la valeur du symbole
 			 */
 			public String toString(){
-				return "Valeur temporaire : "+temp;
-				//TODO modifier pour les images
+				return "Valeur du symbole : "+valeurSymbole;
 			}
 	
 }
