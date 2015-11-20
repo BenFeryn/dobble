@@ -91,8 +91,8 @@ public class Fenetre extends JFrame{
 	 * @param c CarteG
 	 * 		Carte à ajouter
 	 */
-	public void ajouter(CarteG c){
-		fond.ajouter(c);
+	public void ajouter(Element e){
+		fond.ajouter(e);
 	}
 	
 	/**

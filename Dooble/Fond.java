@@ -7,29 +7,31 @@ import javax.swing.JPanel;
 /**
  * Cette classe hérite de JPanel.
  * Elle représente le fond de la fenêtre.
- * Là où nous dessinerons les cartes
- * @see CarteG
+ * Là où nous dessinerons les élèments
+ * @see Element
  * 
  * @author Camille
- * @version 1.0
+ * @version 1.1
  */
 public class Fond extends JPanel{
 	
 	/* Attributs */
 	
 	/**
-	 * Liste des carte dans le "fond" de la fenêtre
+	 * Liste des elements dans le "fond" de la fenêtre
 	 * à chaque ajout ou suppression l'affichage se met à jour
+	 * @since 1.1
 	 */
-	private ArrayList<CarteG> cartes;
+	private ArrayList<Element> elements;
 	
 	/* Constructeurs */
 	
 	/**
-	 * Crée un nouvau fond sans carte
+	 * Crée un nouvau fond sans élèments
+	 * @since 1.1
 	 */
 	public Fond(){
-		cartes = new ArrayList<CarteG>();
+		elements = new ArrayList<Element>();
 	}
 	
 	
@@ -38,9 +40,9 @@ public class Fond extends JPanel{
 	 * @param c
 	 * 		Fond à copier
 	 */
-	public Fond(ArrayList<CarteG> c){
+	public Fond(ArrayList<Element> c){
 		for(int i=0;i<c.size();i++){
-			cartes.add(c.get(i));
+			elements.add(c.get(i));
 		}
 	}
 	
@@ -58,59 +60,64 @@ public class Fond extends JPanel{
 	}
 	
 	/**
-	 * Retourne l'arraylist contenant toutes les cartes du fond
+	 * Retourne l'arraylist contenant tous les élèments du fond
 	 * @return ArrayList
-	 * 		Liste des cartes
+	 * 		Liste des élèments
+	 * @since 1.1
 	 */
-	public ArrayList<CarteG> getCartes(){
-		return cartes;
+	public ArrayList<Element> getCartes(){
+		return elements;
 	}
 	
 	/* SET */
 	
 	/**
-	 * Changer les cartes avec une autre arraylist de Carte
+	 * Changer les élèments avec une autre arraylist d'élèments
 	 * @param c ArrayList
+	 * @since 1.1
 	 */
-	public void setCartes(ArrayList<CarteG> c){
-		cartes = c;
+	public void setElements(ArrayList<Element> c){
+		elements = c;
 	}
 	
 	/* Methode */
 	
 	/**
-	 * Méthode appelée automatique pour afficher toutes contenues dans l'arraylist les cartes sur le fond
+	 * Méthode appelée automatique pour afficher tous les élèments contenus dans l'arraylist sur le fond
+	 * @since 1.1
 	 */
 	public void paint(Graphics g){
-		for(int i = 0; i < cartes.size();i++)
-			cartes.get(i).afficher(g);
+		for(int i = 0; i < elements.size();i++)
+			elements.get(i).afficher(g);
 	}
 	
 	/**
-	 * Méthode pour ajouter une carte dans l'arraylist et l'affiche
-	 * @param c CarteG
-	 * 		Carte à ajouter et afficher
+	 * Méthode pour ajouter un élèments dans l'arraylist et l'affiche
+	 * @param c Element
+	 * 		Elèment à ajouter et afficher
+	 * @since 1.1
 	 */
-	public void ajouter(CarteG c){
-		cartes.add(c);
+	public void ajouter(Element e){
+		elements.add(e);
 		repaint();
 	}
 	
 	/**
-	 * Supprimer un carte présente dans l'arraylist et l'enlève du fond
-	 * @param c CarteG
-	 * 		Carte à enlever
+	 * Supprimer un élèments présent dans l'arraylist et l'enlèver du fond
+	 * @param c Element
+	 * 		Elèment à enlever
+	 * @since 1.1
 	 */
-	public void supprimer(CarteG c) {
-		cartes.remove(c);
+	public void supprimer(Element c) {
+		elements.remove(c);
 		repaint();
 	}
 	
 	/**
-	 * Effacer toutes les cartes de l'arrylist et du fond
+	 * Effacer tous les élèments de l'arrylist et du fond
 	 */
 	public void effacer(){
-		cartes.clear();
+		elements.clear();
 		repaint();
 	}
 
