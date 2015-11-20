@@ -1,7 +1,11 @@
 import java.awt.GraphicsEnvironment;
+import java.awt.Image;
 import java.awt.Point;
 import java.awt.Rectangle;
+import java.io.IOException;
+import java.net.URL;
 
+import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 
 /**
@@ -30,7 +34,7 @@ public class Fenetre extends JFrame{
 	/* Constructeur */
 	
 	/**
-	 * Inialise une nouvelle fenêtre avec un fond vide
+	 * Initialise une nouvelle fenêtre avec un fond vide
 	 * Applique la taille utile de l'écran
 	 */
 	public Fenetre(){
@@ -49,6 +53,16 @@ public class Fenetre extends JFrame{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setResizable(false);
 		setLocationRelativeTo(null);
+		
+		//Icone de la fenêtre
+		try {
+		    URL url = getClass().getClassLoader().getResource ("./img/ico/icone.png");
+		    Image icone = ImageIO.read (url);
+		    setIconImage(icone);
+		}
+		catch ( IOException e ) {		
+		    System.out.println ("[!] Erreur : L'image est introuvable.\n" + e);
+		}
 	}
 	
 	/* Accesseurs */
