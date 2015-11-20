@@ -35,8 +35,8 @@ public class Carte {
 		public Carte(int id, int s[]) {
 			this.id = id;
 			
-			symboles = new Symbole[Csts.NB_SYMBOLES];
-			for(int i=0;i<Csts.NB_SYMBOLES;i++){
+			symboles = new Symbole[Csts.SYMBOLES_CARTE];
+			for(int i=0;i<Csts.SYMBOLES_CARTE;i++){
 				symboles[i] = new Symbole(s[i]);
 			}
 		}
@@ -49,8 +49,8 @@ public class Carte {
 		public Carte(Carte c){
 			this.id = c.id;
 			
-			symboles = new Symbole[Csts.NB_SYMBOLES];
-			for(int i=0;i<Csts.NB_SYMBOLES;i++){
+			symboles = new Symbole[Csts.SYMBOLES_CARTE];
+			for(int i=0;i<Csts.SYMBOLES_CARTE;i++){
 				this.symboles[i] = c.symboles[i];
 			}
 		}
