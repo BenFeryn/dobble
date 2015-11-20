@@ -51,7 +51,6 @@ public class SymboleG extends Element{
 		catch ( IOException e ) {		
 		    System.out.println ("[!] Erreur : L'image est introuvable.\n" + e);
 		}
-		
 	}
 	
 	/* Accesseur */
@@ -80,5 +79,12 @@ public class SymboleG extends Element{
 	
 	public boolean comparer(SymboleG s){
 		return s.getSymbole().equals(getSymbole());
+	}
+	
+	public boolean intersection(Point p){
+		boolean retour = true;
+		if(p.getX() > max.getX() || p.getX() < min.getX() || p.getY() > max.getY() || p.getY() < min.getY())
+			retour = false;
+		return retour;
 	}
 }

@@ -2,6 +2,9 @@ import java.awt.GraphicsEnvironment;
 import java.awt.Image;
 import java.awt.Point;
 import java.awt.Rectangle;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.io.IOException;
 import java.net.URL;
 
@@ -63,6 +66,7 @@ public class Fenetre extends JFrame{
 		catch ( IOException e ) {		
 		    System.out.println ("[!] Erreur : L'image est introuvable.\n" + e);
 		}
+		
 	}
 	
 	/* Accesseurs */

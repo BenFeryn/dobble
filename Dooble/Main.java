@@ -11,11 +11,25 @@ public class Main {
 		Fenetre f = new Fenetre();
 		f.ajouter(c);
 		f.ajouter(c2);
-		
+
 		//test affichage symbole image
 		Symbole s = new Symbole(0);
 		SymboleG sg = new SymboleG(new Point(200,200), s, 50, 50);
 		f.ajouter(sg);
-	}
 
+		//test souris
+		Souris souris = new Souris(f.getHauteur());
+		f.addMouseListener(souris);
+		f.addMouseMotionListener(souris);
+
+		while(true){
+			try{
+				Thread.sleep(1);
+			}catch (Exception e){	
+			    System.out.println(e);
+			}
+			if(souris.getClicGauche() && sg.intersection(souris.getPosition()))
+				System.out.println("clic !");
+		}
+	}
 }
