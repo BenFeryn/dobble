@@ -108,8 +108,8 @@ public class Fond extends JPanel{
 	 * 		Elèment à enlever
 	 * @since 1.1
 	 */
-	public void supprimer(Element c) {
-		elements.remove(c);
+	public void supprimer(Element e) {
+		elements.remove(e);
 		repaint();
 	}
 	
