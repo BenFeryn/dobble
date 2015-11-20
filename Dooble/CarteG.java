@@ -2,7 +2,7 @@ import java.awt.Graphics;
 import java.awt.Point;
 
 /**
- * Cette classe sera la version affichée d'une Carte
+ * Cette classe sera la version affichï¿½e d'une Carte
  * @see Carte
  * @author Camille
  * @version 1.0
@@ -14,12 +14,12 @@ public class CarteG extends Element{
 	private int rayon;
 	
 	/**
-	 * Symboles à afficher de la carte
+	 * Symboles ï¿½ afficher de la carte
 	 */
 	private SymboleG symboles[];
 	
 	/**
-	 * Carte qui sera utilée pour modiler la carte à l'écran
+	 * Carte qui sera utilï¿½e pour modiler la carte ï¿½ l'ï¿½cran
 	 * @see Carte
 	 */
 	private Carte carte;
@@ -27,12 +27,12 @@ public class CarteG extends Element{
 	/* Constructeurs */
 	
 	/**
-	 * Construit une carte à afficher avec une carte, un point et une rayon
+	 * Construit une carte ï¿½ afficher avec une carte, un point et une rayon
 	 * Elle initialise les symboles dans la carte
 	 * @param c Carte
-	 * 		Carte utilisée
+	 * 		Carte utilisï¿½e
 	 * @param o Point
-	 * 		Point au centre de la carte à afficher
+	 * 		Point au centre de la carte ï¿½ afficher
 	 * @param r int
 	 * 		Rayon de la carte
 	 */
@@ -58,9 +58,9 @@ public class CarteG extends Element{
 	}
 	
 	/**
-	 * Retourne la carte utilisée pour modéliser la carte à afficher
+	 * Retourne la carte utilisï¿½e pour modï¿½liser la carte ï¿½ afficher
 	 * @return Carte
-	 * 		Carte utilisée
+	 * 		Carte utilisï¿½e
 	 */
 	public Carte getCarte(){
 		return carte;
@@ -78,18 +78,19 @@ public class CarteG extends Element{
 	}
 	
 	/**
-	 * Changer la carte untilisée
+	 * Changer la carte untilisï¿½e
 	 * @param c Carte
-	 * 		Carte utilisée
+	 * 		Carte utilisï¿½e
 	 */
 	public void setCarte(Carte c){
 		carte = new Carte(c);
+		//TODO gÃ©nÃ©rer nouvelle carteG
 	}
 	
-	/* Méthodes */
+	/* Mï¿½thodes */
 	
 	/**
-	 * Méthode appelée automatiquement pour afficher la carte à l'écran
+	 * Mï¿½thode appelï¿½e automatiquement pour afficher la carte ï¿½ l'ï¿½cran
 	 * @param g Graphics
 	 */
 	public void afficher(Graphics g) {

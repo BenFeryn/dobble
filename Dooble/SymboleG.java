@@ -7,7 +7,7 @@ import java.net.URL;
 import javax.imageio.ImageIO;
 
 /**
- * Cette classe représente un symbole à afficher.
+ * Cette classe reprï¿½sente un symbole ï¿½ afficher.
  * Elle sera la version graphique de la classe Symbole.
  * @see Symbole
  * 
@@ -41,7 +41,7 @@ public class SymboleG extends Element{
 		min = new Point((int)o.getX()-largeur/2,(int)o.getY()-hauteur/2);
 		max = new Point((int)o.getX()+largeur/2,(int)o.getY()+hauteur/2);
 		
-		//TODO Générer l'image
+		//TODO Gï¿½nï¿½rer l'image
 		
 		try {
 		    URL url = getClass().getClassLoader().getResource ("./img/"+s.getLienImg());
@@ -61,15 +61,23 @@ public class SymboleG extends Element{
 		return selectionne;
 	}
 	
+	public Symbole getSymbole(){
+		return symbole;
+	}
+	
 	/* SET */
 	
 	public void setSelectionne(boolean b){
 		selectionne = b;
 	}
 	
-	/* Méthode */
+	/* Mï¿½thode */
 	
 	public void afficher(Graphics g){
 		g.drawImage (img, (int)min.getX(), (int)(g.getClipBounds().getHeight()-this.min.getY()-hauteur), largeur, hauteur, null);
+	}
+	
+	public boolean comparer(SymboleG s){
+		return s.getSymbole().equals(getSymbole());
 	}
 }
