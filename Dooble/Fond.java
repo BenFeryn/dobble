@@ -93,7 +93,7 @@ public class Fond extends JPanel{
 	
 	/**
 	 * Méthode pour ajouter un élèments dans l'arraylist et l'affiche
-	 * @param c Element
+	 * @param e Element
 	 * 		Elèment à ajouter et afficher
 	 * @since 1.1
 	 */
@@ -104,7 +104,7 @@ public class Fond extends JPanel{
 	
 	/**
 	 * Supprimer un élèments présent dans l'arraylist et l'enlèver du fond
-	 * @param c Element
+	 * @param e Element
 	 * 		Elèment à enlever
 	 * @since 1.1
 	 */

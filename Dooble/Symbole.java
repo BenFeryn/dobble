@@ -31,8 +31,8 @@ public class Symbole {
 
 		/**
 		 * Instanciera un symbole avec la valeur donnée grâce au nom de l'image qui sera "Symbole_valeurSymbole"
-		 * @param img String
-		 * 		Lien vers l'image <strong>existante</strong>	
+		 * @param i int
+		 * 		Entier correspondant à une image
 		 */
 		public Symbole(int i) {
 			valeurSymbole = i;
