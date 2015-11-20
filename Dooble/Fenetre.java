@@ -41,7 +41,10 @@ public class Fenetre extends JFrame{
 		GraphicsEnvironment graphicsEnvironment=GraphicsEnvironment.getLocalGraphicsEnvironment();
 		Rectangle maximumWindowBounds=graphicsEnvironment.getMaximumWindowBounds();
 		
-		setSize((int)maximumWindowBounds.getWidth(), (int)maximumWindowBounds.getHeight());
+		hauteur = (int)maximumWindowBounds.getHeight();
+		largeur = (int)maximumWindowBounds.getWidth();
+		
+		setSize(largeur, hauteur);
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setResizable(false);
@@ -71,6 +74,14 @@ public class Fenetre extends JFrame{
 		return fond.getMilieu();
 	}
 	
+	public int getHauteur(){
+		return hauteur;
+	}
+	
+	public int getLargeur(){
+		return largeur;
+	}
+	
 	/* SET */
 	
 	
@@ -86,22 +97,22 @@ public class Fenetre extends JFrame{
 	}
 	
 	/**
-	 * Ajouter une nouvelle carte
+	 * Ajouter un nouvel élèment
 	 * Fait l'intermédiaire avec le fond
-	 * @param c CarteG
-	 * 		Carte à ajouter
+	 * @param  e Element
+	 * 		Elèment à ajouter
 	 */
 	public void ajouter(Element e){
 		fond.ajouter(e);
 	}
 	
 	/**
-	 * Supprime une carte de l'écran
+	 * Supprime un élèment de l'écran
 	 * Fait l'intermédiaire avec le fond
-	 * @param c CarteG
-	 * 		Carte à supprimer
+	 * @param e Element
+	 * 		Elèment à supprimer
 	 */
-	public void supprimer(CarteG c){
-		fond.supprimer(c);
+	public void supprimer(Element e){
+		fond.supprimer(e);
 	}
 }
