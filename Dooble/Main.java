@@ -1,9 +1,23 @@
-import java.awt.Point;
+import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 
 public class Main {
 
 	public static void main(String[] args) {
+		
+		Jeu j = new Jeu();
+		
+		while(true){
+			try {
+				Thread.sleep(10);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			j.joue();
+		}
+		
+		/*
 		//test affichage carte
 		Paquet p =new Paquet();
 		CarteG c = new CarteG(p.getCarte(0), new Point(50,150), 10);
@@ -31,5 +45,6 @@ public class Main {
 			if(souris.getClicGauche() && sg.intersection(souris.getPosition()))
 				System.out.println("clic !");
 		}
+		*/
 	}
 }

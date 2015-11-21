@@ -113,7 +113,7 @@ public class Carte {
 			 */
 			public String toString(){
 				String str = new String("Contenu de la carte "+id+": \n");
-				for(int  i=0;i<Csts.NB_SYMBOLES;i++){
+				for(int  i=0;i<Csts.SYMBOLES_CARTE;i++){
 					str += symboles[i].toString()+"\n";
 				}
 				
