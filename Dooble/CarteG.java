@@ -24,6 +24,8 @@ public class CarteG extends Element{
 	 */
 	private Carte carte;
 	
+	private boolean selectionne;
+	
 	/* Constructeurs */
 	
 	/**
@@ -39,6 +41,7 @@ public class CarteG extends Element{
 	public CarteG(Carte c,Point o, int r){
 		super(o);
 		rayon = r;
+		selectionne = false;
 		
 		symboles = new SymboleG[Csts.SYMBOLES_CARTE];
 		carte = new Carte(c);
@@ -73,6 +76,21 @@ public class CarteG extends Element{
 		return symboles[i];
 	}
 	
+	public boolean getSelectionne(){
+		return selectionne;
+	}
+	
+	public SymboleG getSymboleSelectionne(){
+		SymboleG temp = null;
+		int i = 0;
+		while(i < Csts.SYMBOLES_CARTE && temp == null){
+			if(symboles[i].getSelectionne())
+				temp = symboles[i];
+			i++;
+		}
+		return temp;
+	}
+	
 	/* SET */
 	
 	/**
@@ -94,6 +112,10 @@ public class CarteG extends Element{
 		//TODO gÃ©nÃ©rer nouvelle carteG
 	}
 	
+	public void setSelectionne(boolean b){
+		selectionne = b;
+	}
+	
 	/* Mï¿½thodes */
 	
 	/**
@@ -110,6 +132,7 @@ public class CarteG extends Element{
 	 * 		index du symbole à sélectionner
 	 */
 	public void selectionne(int i){
+		selectionne = true;
 		for(int j=0;j<Csts.SYMBOLES_CARTE;j++){
 			if(j==i)
 				symboles[j].setSelectionne(true);
