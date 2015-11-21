@@ -48,10 +48,14 @@ public class Fenetre extends JFrame{
 		GraphicsEnvironment graphicsEnvironment=GraphicsEnvironment.getLocalGraphicsEnvironment();
 		Rectangle maximumWindowBounds=graphicsEnvironment.getMaximumWindowBounds();
 		
-		hauteur = (int)maximumWindowBounds.getHeight();
-		largeur = (int)maximumWindowBounds.getWidth();
+		//hauteur = (int)maximumWindowBounds.getHeight();
+		//largeur = (int)maximumWindowBounds.getWidth();
+		
+		hauteur = 600;
+		largeur = 800;
 		
 		setSize(largeur, hauteur);
+		setTitle("Kappa");
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setResizable(false);

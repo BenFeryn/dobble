@@ -97,8 +97,9 @@ public class Jeu {
 			cartes[i] = new CarteG(p.getCarte(indexCartes[index]), positionCartes[i], f.getLargeur()/6);
 			f.ajouter(cartes[i]);
 			index++;
+			
 			// TODO à supprimer
-			System.out.println(cartes[i].getCarte());
+			//System.out.println(cartes[i].getCarte());
 		}
 	}
 	
@@ -107,10 +108,14 @@ public class Jeu {
 	 * @see joue()
 	 */
 	private void selection(){
-		for(int i=0;i<Csts.CARTE_FENETRE;i++){
-			for(int j=0;j<Csts.SYMBOLES_CARTE;j++){
-				if(souris.getClicGauche() && cartes[i].getSymboleG(j).intersection(souris.getPosition()))
-					cartes[i].selectionne(j);
+		if(souris.getClicGauche()){
+			for(int i=0;i<Csts.CARTE_FENETRE;i++){
+				for(int j=0;j<Csts.SYMBOLES_CARTE;j++){
+					if(cartes[i].getSymboleG(j).intersection(souris.getPosition())){
+						System.out.println("[!] Selection du symbole "+cartes[i].getSymboleG(j).getSymbole().getValeurSymbole()+" de la carte "+(i+1));
+						cartes[i].selectionne(j);
+					}
+				}
 			}
 		}
 	}
@@ -121,6 +126,7 @@ public class Jeu {
 	public void joue(){
 		selection();
 		if(cartes[0].getSelectionne() && cartes[1].getSelectionne()){
+			System.out.println("[!] ça compare");
 			if(cartes[0].getSymboleSelectionne().equals(cartes[1].getSymboleSelectionne())){
 				bonnePaire();
 			}else{
@@ -134,6 +140,10 @@ public class Jeu {
 	 */
 	private void bonnePaire() {
 		System.out.println("Nice ! GG.");
+		for(int i=0;i<Csts.CARTE_FENETRE;i++){
+			cartes[i].setSelectionne(false);
+			cartes[i].getSymboleSelectionne().setSelectionne(false);
+		}
 		nouvelleCartePaquet();
 	}
 
@@ -142,6 +152,10 @@ public class Jeu {
 	 */
 	private void mauvaisePaire() {
 		System.out.println("Kappa.");
+		for(int i=0;i<Csts.CARTE_FENETRE;i++){
+			cartes[i].getSymboleSelectionne().setSelectionne(false);
+			cartes[i].setSelectionne(false);
+		}
 	}
 
 	/**

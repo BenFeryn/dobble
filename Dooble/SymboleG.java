@@ -62,8 +62,8 @@ public class SymboleG extends Element{
 		symbole = s;
 		this.largeur = largeur;
 		this.hauteur = hauteur;
-		min = new Point((int)o.getX()-largeur/2,(int)o.getY()-hauteur/2);
-		max = new Point((int)o.getX()+largeur/2,(int)o.getY()+hauteur/2);
+		min = new Point((int)getCentre().getX()-largeur/2,(int)getCentre().getY()-hauteur/2);
+		max = new Point((int)getCentre().getX()+largeur/2,(int)getCentre().getY()+hauteur/2);
 		
 		//TODO G�n�rer l'image
 		
@@ -146,5 +146,9 @@ public class SymboleG extends Element{
 		if(p.getX() > max.getX() || p.getX() < min.getX() || p.getY() > max.getY() || p.getY() < min.getY())
 			retour = false;
 		return retour;
+	}
+	
+	public String toString(){
+		return new String("SymboleG : "+getSymbole().getValeurSymbole()+" "+getSelectionne());
 	}
 }

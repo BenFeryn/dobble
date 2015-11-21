@@ -45,9 +45,6 @@ public class CarteG extends Element{
 		
 		symboles = new SymboleG[Csts.SYMBOLES_CARTE];
 		carte = new Carte(c);
-		for(int i=0;i<Csts.SYMBOLES_CARTE;i++){
-			symboles[i] = new SymboleG(new Point(100,100), carte.getSymbole(i), 100, 100);
-		}
 	}
 	
 	/* Accesseurs */
@@ -124,6 +121,7 @@ public class CarteG extends Element{
 	 */
 	public void afficher(Graphics g) {
 		g.drawOval((int)(getCentre().getX()-rayon), (int)(g.getClipBounds().getHeight()-getCentre().getY()-rayon ), (rayon*2), (rayon*2));
+		ajoutSymboles(g);
 	}
 	
 	/**
@@ -141,8 +139,20 @@ public class CarteG extends Element{
 		}
 	}
 	
-	public void ajoutSymboles(){
-
+	private void ajoutSymboles(Graphics g){
+		placerSymbole();
+		for(int i=0;i<Csts.SYMBOLES_CARTE;i++){
+			symboles[i].afficher(g);
+		}
+		
+	}
+	
+	private void placerSymbole(){
+		for(int i=0;i<Csts.SYMBOLES_CARTE;i++){
+			int x = (int)((Math.cos(i*Math.PI/4)*(rayon*0.75))+getCentre().getX());
+			int y = (int)((Math.sin(i*Math.PI/4)*(rayon*0.75))+getCentre().getY());
+			symboles[i] = new SymboleG(new Point(x, y), carte.getSymbole(i), 50, 50);
+		}
 	}
 
 }
