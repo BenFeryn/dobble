@@ -1,6 +1,10 @@
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Point;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+import javax.print.DocFlavor.URL;
 
 /**
  * Cette classe repr�sente un symbole � afficher.
@@ -67,14 +71,14 @@ public class SymboleG extends Element{
 		
 		//TODO G�n�rer l'image
 		
-		/*try {
-		    URL url = getClass().getClassLoader().getResource ("./img/smb/"+s.getLienImg()+".png");
+		try {
+		    java.net.URL url = getClass().getClassLoader().getResource ("./img/smb/"+s.getLienImg()+".png");
 		    //System.out.println(url.getPath());
 		    img = ImageIO.read (url);
 		}
 		catch ( IOException e ) {		
 		    System.out.println ("[!] Erreur : L'image est introuvable.\n" + e);
-		}*/
+		}
 	}
 	
 	/* Accesseur */
@@ -118,8 +122,8 @@ public class SymboleG extends Element{
 	 */
 	public void afficher(Graphics g){
 		//Attente des images. On dessine des rectangles
-		g.drawRect ( (int)min.getX(), (int)(g.getClipBounds().getHeight()-min.getY()-hauteur), largeur, hauteur );
-		//g.drawImage (img, (int)min.getX(), (int)(g.getClipBounds().getHeight()-this.min.getY()-hauteur), largeur, hauteur, null);
+		//g.drawRect ( (int)min.getX(), (int)(g.getClipBounds().getHeight()-min.getY()-hauteur), largeur, hauteur );
+		g.drawImage (img, (int)min.getX(), (int)(g.getClipBounds().getHeight()-this.min.getY()-hauteur), largeur, hauteur, null);
 	}
 	
 	/**

@@ -55,7 +55,7 @@ public class Jeu {
 		positionCartes[0] = new Point((int)f.getMilieu().getX()/2,(int)f.getMilieu().getY());
 		positionCartes[1] = new Point((int)(f.getMilieu().getX()/2+f.getMilieu().getX()),(int)f.getMilieu().getY());
 	
-		index = 0;
+		index = -1;
 		initialisationIndexCartes();
 		initialiseCartes();
 	}
@@ -71,6 +71,9 @@ public class Jeu {
 			indexCartes[i] = i;
 		}
 		melangeCartes(indexCartes);
+		for(int i=0;i<indexCartes.length;i++)
+			System.out.print(indexCartes[i]+" ");
+		System.out.println();
 	}
 	
 	/**
@@ -94,10 +97,9 @@ public class Jeu {
 	 */
 	private void initialiseCartes(){
 		for(int i=0;i<Csts.CARTE_FENETRE;i++){
-			cartes[i] = new CarteG(p.getCarte(indexCartes[index]), positionCartes[i], f.getLargeur()/6);
-			f.ajouter(cartes[i]);
 			index++;
-			
+			cartes[i] = new CarteG(p.getCarte(indexCartes[i]), positionCartes[i], f.getLargeur()/6);
+			f.ajouter(cartes[i]);
 			// TODO à supprimer
 			//System.out.println(cartes[i].getCarte());
 		}
@@ -112,7 +114,7 @@ public class Jeu {
 			for(int i=0;i<Csts.CARTE_FENETRE;i++){
 				for(int j=0;j<Csts.SYMBOLES_CARTE;j++){
 					if(cartes[i].getSymboleG(j).intersection(souris.getPosition())){
-						System.out.println("[!] Selection du symbole "+cartes[i].getSymboleG(j).getSymbole().getValeurSymbole()+" de la carte "+(i+1));
+						System.out.println("[!] Selection du symbole "+cartes[i].getSymboleG(j).getSymbole().getValeurSymbole()+" de la carte "+(i+1)+"("+cartes[i].getCarte().getId()+")");
 						cartes[i].selectionne(j);
 					}
 				}
@@ -162,6 +164,15 @@ public class Jeu {
 	 * Méthode qui ramère le carte du paquet sur le tas du joueur et affiche la nouvelle carte du paquet
 	 */
 	private void nouvelleCartePaquet() {
-		//TODO prendre la carte du paquet la placer sur tas du joueur et afficher la nouvelle carte du paquet
+		for(int i=0;i<Csts.CARTE_FENETRE;i++){
+			for(int j=0;j<Csts.SYMBOLES_CARTE;j++){
+				f.supprimer(cartes[i].getSymboleG(j));
+				f.repaint();
+			}
+			f.supprimer(cartes[i]);
+			cartes[i] = new CarteG(p.getCarte(indexCartes[index+i]), positionCartes[i], cartes[i].getRayon());
+			f.ajouter(cartes[i]);
+		}
+		index++;
 	}
 }
