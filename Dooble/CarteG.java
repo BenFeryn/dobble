@@ -127,7 +127,7 @@ public class CarteG extends Element{
 	/**
 	 * Selectionne un symbole dans la carte
 	 * @param i int
-	 * 		index du symbole à sélectionner
+	 * 		index du symbole ï¿½ sï¿½lectionner
 	 */
 	public void selectionne(int i){
 		selectionne = true;

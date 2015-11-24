@@ -1,6 +1,8 @@
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Point;
+import java.awt.geom.AffineTransform;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
@@ -19,43 +21,43 @@ public class SymboleG extends Element{
 	/* Attributs */
 
 	/**
-	 * Symbole utilisé pour faire le SymboleG
+	 * Symbole utilisï¿½ pour faire le SymboleG
 	 */
 	private Symbole symbole;
 
 	/**
-	 * Image déssinée, générée à l'aide du lien dans le symbole
+	 * Image dï¿½ssinï¿½e, gï¿½nï¿½rï¿½e ï¿½ l'aide du lien dans le symbole
 	 * @see Symbole.LienImg
 	 */
 	private Image img;
 
 	/**
 	 * Dimmensiens
-	 * Elles seront utilisées pour donner diverses tailles aux symboles
+	 * Elles seront utilisï¿½es pour donner diverses tailles aux symboles
 	 */
 	private int largeur;
 	private int hauteur;
 	
 	/**
-	 * Point inférieur gauche et Point supérieur droite de l'image
-	 * Ils seront déterminés grâce au point centrale et aux dimenssions de l'image
+	 * Point infï¿½rieur gauche et Point supï¿½rieur droite de l'image
+	 * Ils seront dï¿½terminï¿½s grï¿½ce au point centrale et aux dimenssions de l'image
 	 */
 	private Point min;
 	private Point max;
 	
 	/**
-	 * Détermine si le symboleG est séléctionné ou pas
+	 * Dï¿½termine si le symboleG est sï¿½lï¿½ctionnï¿½ ou pas
 	 */
 	private boolean selectionne;
 
 	/* Constructeur */
 	
 	/**
-	 * Initialise un SymboleG avec le lien de symbole, un point centrale, la taille et la sélection fausse
+	 * Initialise un SymboleG avec le lien de symbole, un point centrale, la taille et la sï¿½lection fausse
 	 * @param o Point
 	 * 		Point centrale
 	 * @param s Symbole
-	 * 		Symbole utilisé pour générer le SymboleG
+	 * 		Symbole utilisï¿½ pour gï¿½nï¿½rer le SymboleG
 	 * @param largeur int
 	 * @param hauteur int
 	 * 		Dimmenssions de l'image
@@ -86,7 +88,7 @@ public class SymboleG extends Element{
 	/* GET */
 	
 	/**
-	 * Permet de récupérer la seletion du symbole
+	 * Permet de rï¿½cupï¿½rer la seletion du symbole
 	 * @return boolean
 	 * 		@see selectionne
 	 */
@@ -95,7 +97,7 @@ public class SymboleG extends Element{
 	}
 	
 	/**
-	 * Permet de récupérer le symbole utilisé
+	 * Permet de rï¿½cupï¿½rer le symbole utilisï¿½
 	 * @return Symbole
 	 * 		@see symbole
 	 */
@@ -106,7 +108,7 @@ public class SymboleG extends Element{
 	/* SET */
 	
 	/**
-	 * Permet de changer la séléction du SymboleG
+	 * Permet de changer la sï¿½lï¿½ction du SymboleG
 	 * @param b boolean
 	 * 		@see selectionne
 	 */
@@ -117,20 +119,27 @@ public class SymboleG extends Element{
 	/* Mï¿½thode */
 	
 	/**
-	 * Méthode héritée de Element qui permet de dessiner le SymboleG à l'écran avec ses dimmensions et sa position
+	 * Mï¿½thode hï¿½ritï¿½e de Element qui permet de dessiner le SymboleG ï¿½ l'ï¿½cran avec ses dimmensions et sa position
 	 * @see Element
 	 */
 	public void afficher(Graphics g){
 		//Attente des images. On dessine des rectangles
 		//g.drawRect ( (int)min.getX(), (int)(g.getClipBounds().getHeight()-min.getY()-hauteur), largeur, hauteur );
-		g.drawImage (img, (int)min.getX(), (int)(g.getClipBounds().getHeight()-this.min.getY()-hauteur), largeur, hauteur, null);
+		Graphics2D g2 = (Graphics2D)g;
+		AffineTransform rotation = new AffineTransform();
+		rotation.translate(min.getX(), (int)(g.getClipBounds().getHeight()-this.min.getY()-hauteur));
+		rotation.scale(0.1, 0.1);
+		rotation.rotate(Math.toRadians(45), largeur, hauteur);
+		g2.drawImage(img, rotation, null);
+		
+		//g.drawImage (img,rotation, (int)min.getX(), (int)(g.getClipBounds().getHeight()-this.min.getY()-hauteur), largeur, hauteur, null);
 	}
 	
 	/**
-	 * Méthode qui compare deux SymboleG, elle fait appelle à la méthode comparer de Symbole
+	 * Mï¿½thode qui compare deux SymboleG, elle fait appelle ï¿½ la mï¿½thode comparer de Symbole
 	 * @see Symbole
 	 * @param s SymboleG
-	 * 		SymboleG à comparer
+	 * 		SymboleG ï¿½ comparer
 	 * @return boolean
 	 * 		vrai si egale sinon faux
 	 */
@@ -139,9 +148,9 @@ public class SymboleG extends Element{
 	}
 	
 	/**
-	 * Test l'intersection entre un Symbole et un Point (généralement la souris)
+	 * Test l'intersection entre un Symbole et un Point (gï¿½nï¿½ralement la souris)
 	 * @param p Point
-	 * 		Point à tester
+	 * 		Point ï¿½ tester
 	 * @return boolean
 	 * 		vrai si intersection sinon faux
 	 */
