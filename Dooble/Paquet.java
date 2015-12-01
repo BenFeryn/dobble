@@ -158,7 +158,7 @@ public class Paquet{
 					for(int j=0;j<7;j++){
 						matriceSymboles[7*b+j][j] = i;
 						if(j==7)
-							i--;
+							i-=2;
 						else{
 							i++;
 							if(i==36)
