@@ -2,9 +2,9 @@ import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
- * Cette classe représente un paquet de cartes.
- * Le contenu des cartes est déterminé dans cette classe.
- * Il devra respécter les régles du jeu Dooble.
+ * Cette classe reprï¿½sente un paquet de cartes.
+ * Le contenu des cartes est dï¿½terminï¿½ dans cette classe.
+ * Il devra respï¿½cter les rï¿½gles du jeu Dooble.
  * 
  * @author Camille
  * @version 1.0
@@ -16,10 +16,11 @@ public class Paquet{
 	/**
 	 * Instanciation des cartes dans le paquet.
 	 * @see Carte
-	 * Pourra être modifié
+	 * Pourra ï¿½tre modifiï¿½
 	 * @see setCarte(int i, Carte c)
 	 */
 	private Carte cartes[];
+	private int matriceSymboles[][];
 	
 	/* Constructeur */
 	
@@ -29,11 +30,13 @@ public class Paquet{
 	public Paquet(){
 		cartes = new Carte[Csts.NB_CARTES];
 		
-		for(int i=0;i<Csts.NB_CARTES;i++){
+		/*for(int i=0;i<Csts.NB_CARTES;i++){
 			int[] c = {0,1,2,3,4,5,6,7};
-			melangeSymbole(c);
 			cartes[i] = new Carte(i,c);
-		}
+		}*/
+		creationSymboles();
+		InitCartes();
+		
 	}
 	
 	/* Accesseur */
@@ -41,11 +44,11 @@ public class Paquet{
 		/* GET */
 			
 			/**
-			 * Retourne une carte du paquet avec un indice donné
+			 * Retourne une carte du paquet avec un indice donnï¿½
 			 * @param i int
-			 * 		indice de la carte à retourner
+			 * 		indice de la carte ï¿½ retourner
 			 * @return Carte
-			 * 		Carte retournée
+			 * 		Carte retournï¿½e
 			 */
 			public Carte getCarte(int i){
 				return cartes[i];
@@ -54,9 +57,9 @@ public class Paquet{
 		/* SET */
 			
 			/**
-			 * Change une carte du paquer en une autre carte avec un indice donné
+			 * Change une carte du paquer en une autre carte avec un indice donnï¿½
 			 * @param i int
-			 * 		indice de la carte à changer
+			 * 		indice de la carte ï¿½ changer
 			 * @param c
 			 * 		Nouvelle carte
 			 */
@@ -64,10 +67,10 @@ public class Paquet{
 				cartes[i] = new Carte(c);
 			}
 	
-	/* Méthode */
+	/* Mï¿½thode */
 	
 	/**
-	 * Redéfinition de la méthode toString pour décrire le paquet
+	 * Redï¿½finition de la mï¿½thode toString pour dï¿½crire le paquet
 	 */
 	public String toString(){
 		String str = new String("");
@@ -80,9 +83,9 @@ public class Paquet{
 	}
 	
 	/**
-	 * Mélange un tableau d'entiers donné
+	 * Mï¿½lange un tableau d'entiers donnï¿½
 	 * @param ar int[]
-	 * 		Tableau d'entier à mélanger
+	 * 		Tableau d'entier ï¿½ mï¿½langer
 	 */
 	private static void melangeSymbole(int[] ar){
 		Random rnd = ThreadLocalRandom.current();
@@ -93,4 +96,77 @@ public class Paquet{
 			ar[i] = a;
 		}
 	}
+	
+	private void InitCartes(){
+		for(int i =0;i<Csts.NB_CARTES;i++){
+			cartes[i] = new Carte(i, matriceSymboles[i]);
+		}
+	}
+	
+	private void creationSymboles(){
+			/* Symboles 0 - 7 */
+				for(int i=0;i<8;i++){
+					for(int j = 0;j<7;j++){
+						matriceSymboles[i*7+j][j] = i;
+					}
+				}
+			
+			
+			/* Symboles 8 - 14 */
+				for(int b=0;b<7;b++){
+					int j=0;
+					for(int i=8;i<15;i++){
+						matriceSymboles[b*7+i][j] = i;
+						j++;
+					}
+				}
+			
+			
+			/* Symboles 15 - 21 */
+				int i=15;
+				for(int b=0;b<7;b++){
+					for(int j=0;j<7;j++){
+						matriceSymboles[7*b+j][j] = i;
+						if(j<6)
+							i++;
+						else{//TODO a voir
+							if(i==22)
+								i=15;
+						}
+					}
+				}
+						
+			/* Symboles 22 - 28 */
+				i=22;
+				for(int b=0;b<7;b++){
+					for(int j=0;j<7;j++){
+						matriceSymboles[7*b+j][j] = i;
+						if(j==7)
+							i--;
+						else{
+							i++;
+							if(i==29)
+								i=22;
+						}
+					}
+				}
+			
+			
+			/* Symboles 29 - 35 */
+				i=29;
+				for(int b=0;b<7;b++){
+					for(int j=0;j<7;j++){
+						matriceSymboles[7*b+j][j] = i;
+						if(j==7)
+							i--;
+						else{
+							i++;
+							if(i==36)
+								i-=7;
+						}
+						if(i<29)
+							i+=7;
+					}
+				}
+		}
 }

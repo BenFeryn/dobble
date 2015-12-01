@@ -3,11 +3,11 @@ import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
- * Classe représentant le mode de jeu basique.
- * Deux cartes à l'écran, d'un côté la carte du joueur et de l'autre le reste du paquet.
+ * Classe reprï¿½sentant le mode de jeu basique.
+ * Deux cartes ï¿½ l'ï¿½cran, d'un cï¿½tï¿½ la carte du joueur et de l'autre le reste du paquet.
  * Si le joueur trouve le symbole en commun entre sa carte et celle au dessus du paquet alors la carte du paquet vient se placer et dessus de sa carte
  * Et une nouvelle carte apparait sur le paquet
- * Les cartes sont toutes dans le désordre
+ * Les cartes sont toutes dans le dï¿½sordre
  * Le joueur devra selectionner les symboles en commun sur les <strong>DEUX CARTES</strong> pour valider son coup
  * 
  * @author Camille
@@ -20,28 +20,28 @@ public class Jeu {
 	private static Souris souris;
 	
 	/**
-	 * Cartes affichées à l'écran
+	 * Cartes affichï¿½es ï¿½ l'ï¿½cran
 	 */
 	private CarteG cartes[];
 	
 	/**
-	 * Index des cartes, utilisé pour le mélange
+	 * Index des cartes, utilisï¿½ pour le mï¿½lange
 	 */
 	private int indexCartes[];
 	
 	/**
-	 * Point qui seront utilisés pour positionner les cartes sur l'écran
+	 * Point qui seront utilisï¿½s pour positionner les cartes sur l'ï¿½cran
 	 */
 	private Point positionCartes[];
 	
 	/**
-	 * Index commun poour cibler le tableau mélangé
-	 * Il cible la prochaine carte à afficher
+	 * Index commun poour cibler le tableau mï¿½langï¿½
+	 * Il cible la prochaine carte ï¿½ afficher
 	 */
 	private int index;
 	
 	/**
-	 * Génére un Paquet de carte, la fenêtre de jeu, la souris, les point où se trouveront les cartes, mélange les cartes et place les deux premières
+	 * Gï¿½nï¿½re un Paquet de carte, la fenï¿½tre de jeu, la souris, les point oï¿½ se trouveront les cartes, mï¿½lange les cartes et place les deux premiï¿½res
 	 */
 	public Jeu(){
 		p = new Paquet();
@@ -61,8 +61,8 @@ public class Jeu {
 	}
 	
 	/**
-	 * Crée un tableau d'entier qui sera un tableau d'index pour les cartes
-	 * Ce tableau sera mélanger par une aure méthode
+	 * Crï¿½e un tableau d'entier qui sera un tableau d'index pour les cartes
+	 * Ce tableau sera mï¿½langer par une aure mï¿½thode
 	 * @see melanCarte(int[] ar)
 	 */
 	private void initialisationIndexCartes(){
@@ -70,16 +70,16 @@ public class Jeu {
 		for(int i=0;i<Csts.NB_CARTES;i++){
 			indexCartes[i] = i;
 		}
-		melangeCartes(indexCartes);
+		//melangeCartes(indexCartes);
 		for(int i=0;i<indexCartes.length;i++)
 			System.out.print(indexCartes[i]+" ");
 		System.out.println();
 	}
 	
 	/**
-	 * Mélange un tableau d'entiers donné
+	 * Mï¿½lange un tableau d'entiers donnï¿½
 	 * @param ar int[]
-	 * 		Tableau d'entier à mélanger
+	 * 		Tableau d'entier ï¿½ mï¿½langer
 	 */
 	private static void melangeCartes(int[] ar){
 		Random rnd = ThreadLocalRandom.current();
@@ -92,21 +92,21 @@ public class Jeu {
 	}
 	
 	/**
-	 * Initiaise les deux première cartes du jeu
-	 * Cette méthode n'est appelée qu'une seule fois dans le constructeur
+	 * Initiaise les deux premiï¿½re cartes du jeu
+	 * Cette mï¿½thode n'est appelï¿½e qu'une seule fois dans le constructeur
 	 */
 	private void initialiseCartes(){
 		for(int i=0;i<Csts.CARTE_FENETRE;i++){
 			index++;
 			cartes[i] = new CarteG(p.getCarte(indexCartes[i]), positionCartes[i], f.getLargeur()/6);
 			f.ajouter(cartes[i]);
-			// TODO à supprimer
+			// TODO ï¿½ supprimer
 			//System.out.println(cartes[i].getCarte());
 		}
 	}
 	
 	/**
-	 * Méthode appelée constamment par la méthode joue pour selectionner les symbole s'il le faut
+	 * Mï¿½thode appelï¿½e constamment par la mï¿½thode joue pour selectionner les symbole s'il le faut
 	 * @see joue()
 	 */
 	private void selection(){
@@ -123,12 +123,12 @@ public class Jeu {
 	}
 	
 	/**
-	 * Méthode appelée constamment par le Main pour faire avancer le jeu
+	 * Mï¿½thode appelï¿½e constamment par le Main pour faire avancer le jeu
 	 */
 	public void joue(){
 		selection();
 		if(cartes[0].getSelectionne() && cartes[1].getSelectionne()){
-			System.out.println("[!] ça compare");
+			System.out.println("[!] ï¿½a compare");
 			if(cartes[0].getSymboleSelectionne().equals(cartes[1].getSymboleSelectionne())){
 				bonnePaire();
 			}else{
@@ -138,7 +138,7 @@ public class Jeu {
 	}
 
 	/**
-	 * Méthode appelé quand une paire de symbole est trouvée par le joueur
+	 * Mï¿½thode appelï¿½ quand une paire de symbole est trouvï¿½e par le joueur
 	 */
 	private void bonnePaire() {
 		System.out.println("Nice ! GG.");
@@ -150,7 +150,7 @@ public class Jeu {
 	}
 
 	/**
-	 * Méthode appelé quand le joueur selectionne une fausse paire
+	 * Mï¿½thode appelï¿½ quand le joueur selectionne une fausse paire
 	 */
 	private void mauvaisePaire() {
 		System.out.println("Kappa.");
@@ -161,7 +161,7 @@ public class Jeu {
 	}
 
 	/**
-	 * Méthode qui ramère le carte du paquet sur le tas du joueur et affiche la nouvelle carte du paquet
+	 * Mï¿½thode qui ramï¿½re le carte du paquet sur le tas du joueur et affiche la nouvelle carte du paquet
 	 */
 	private void nouvelleCartePaquet() {
 		for(int i=0;i<Csts.CARTE_FENETRE;i++){
