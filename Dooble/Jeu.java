@@ -70,7 +70,7 @@ public class Jeu {
 		for(int i=0;i<Csts.NB_CARTES;i++){
 			indexCartes[i] = i;
 		}
-		//melangeCartes(indexCartes);
+		melangeCartes(indexCartes);
 		for(int i=0;i<indexCartes.length;i++)
 			System.out.print(indexCartes[i]+" ");
 		System.out.println();

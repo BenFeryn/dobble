@@ -2,7 +2,10 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		Jeu j = new Jeu();
+		Paquet test = new Paquet();
+		System.out.println(test.getCarte(45));
+		
+		/*Jeu j = new Jeu();
 		
 		while(true){
 			try {
@@ -12,6 +15,6 @@ public class Main {
 			}
 			
 			j.joue();
-		}
+		}*/
 	}
 }

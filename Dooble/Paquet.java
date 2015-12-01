@@ -34,6 +34,7 @@ public class Paquet{
 			int[] c = {0,1,2,3,4,5,6,7};
 			cartes[i] = new Carte(i,c);
 		}*/
+		matriceSymboles = new int[Csts.NB_CARTES][Csts.SYMBOLES_CARTE];
 		creationSymboles();
 		InitCartes();
 		
@@ -105,66 +106,124 @@ public class Paquet{
 	
 	private void creationSymboles(){
 			/* Symboles 0 - 7 */
-				for(int i=0;i<8;i++){
+			int indiceSymbole = 0;
+				for(int i=0;i<7;i++){
 					for(int j = 0;j<7;j++){
-						matriceSymboles[i*7+j][j] = i;
+						System.out.println("i: "+i+" j: "+j);
+						System.out.println("i*7+j: "+(i*7+j));
+						matriceSymboles[i*7+j][indiceSymbole] = i;
 					}
 				}
 			
-			
+			indiceSymbole++;
 			/* Symboles 8 - 14 */
 				for(int b=0;b<7;b++){
 					int j=0;
 					for(int i=8;i<15;i++){
-						matriceSymboles[b*7+i][j] = i;
+						matriceSymboles[b*7+j][indiceSymbole] = i;
 						j++;
 					}
 				}
 			
-			
+				indiceSymbole++;
 			/* Symboles 15 - 21 */
 				int i=15;
 				for(int b=0;b<7;b++){
+					//i=15;
 					for(int j=0;j<7;j++){
-						matriceSymboles[7*b+j][j] = i;
+						matriceSymboles[7*b+j][indiceSymbole] = i;
+						System.out.println(i);
 						if(j<6)
 							i++;
-						else{//TODO a voir
-							if(i==22)
-								i=15;
-						}
+						if(i==22)
+							i=15;
 					}
 				}
-						
+					
+				indiceSymbole++;
 			/* Symboles 22 - 28 */
 				i=22;
 				for(int b=0;b<7;b++){
 					for(int j=0;j<7;j++){
-						matriceSymboles[7*b+j][j] = i;
-						if(j==7)
+						matriceSymboles[7*b+j][indiceSymbole] = i;
+						if(j==6)
 							i--;
 						else{
 							i++;
-							if(i==29)
-								i=22;
 						}
+						if(i==29)
+								i=22;
 					}
 				}
 			
-			
+				indiceSymbole++;
 			/* Symboles 29 - 35 */
 				i=29;
 				for(int b=0;b<7;b++){
 					for(int j=0;j<7;j++){
-						matriceSymboles[7*b+j][j] = i;
-						if(j==7)
+						matriceSymboles[7*b+j][indiceSymbole] = i;
+						if(j==6)
 							i-=2;
 						else{
 							i++;
-							if(i==36)
+						}
+						if(i==36)
+							i-=7;
+						if(i<29)
+							i+=7;
+					}
+				}
+				
+				indiceSymbole++;
+			/* Symmboles 36 - 42 */
+				i=36;
+				for(int b=0;b<7;b++){
+					for(int j=0;j<7;j++){
+						matriceSymboles[7*b+j][indiceSymbole] = i;
+						if(j==6)
+							i-=3;
+						else{
+							i++;
+							if(i>41)
 								i-=7;
 						}
-						if(i<29)
+						if(i<36)
+							i+=7;
+					}
+				}
+				
+				indiceSymbole++;
+			/* Symboles 43 - 49 */
+				i=43;
+				for(int b=0;b<7;b++){
+					for(int j=0;j<7;j++){
+						matriceSymboles[7*b+j][indiceSymbole] = i;
+						if(j==6)
+							i-=4;
+						else{
+							i++;
+							if(i>48)
+								i-=7;
+						}
+						if(i<43)
+							i+=7;
+					}
+				}
+			
+				indiceSymbole++;
+			/* Symboles 50 - 57 */
+				i=50;
+				for(int b=0;b<7;b++){
+					for(int j=0;j<7;j++){
+						matriceSymboles[7*b+j][indiceSymbole] = i;
+						if(j==6)
+							i-=5;
+						else{
+							i++;
+							if(i>56)
+								i-=7;
+						}
+						if(i<50)
 							i+=7;
 					}
 				}
