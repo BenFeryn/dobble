@@ -124,13 +124,13 @@ public class SymboleG extends Element{
 	 */
 	public void afficher(Graphics g){
 		//Attente des images. On dessine des rectangles
-		//g.drawRect ( (int)min.getX(), (int)(g.getClipBounds().getHeight()-min.getY()-hauteur), largeur, hauteur );
-		Graphics2D g2 = (Graphics2D)g;
-		AffineTransform rotation = new AffineTransform();
-		rotation.translate(min.getX(), (int)(g.getClipBounds().getHeight()-this.min.getY()-hauteur));
-		rotation.scale(0.1, 0.1);
-		rotation.rotate(Math.toRadians(45), largeur, hauteur);
-		g2.drawImage(img, rotation, null);
+		g.drawImage ( img,(int)min.getX(), (int)(g.getClipBounds().getHeight()-min.getY()-hauteur), largeur, hauteur, null );
+		//Graphics2D g2 = (Graphics2D)g;
+		//AffineTransform rotation = new AffineTransform();
+		//rotation.translate(min.getX(), (int)(g.getClipBounds().getHeight()-this.min.getY()-hauteur));
+		//rotation.scale(0.2, 0.2);
+		//rotation.rotate(Math.toRadians(45), largeur, hauteur);
+		//g2.drawImage(img, rotation, null);
 		
 		//g.drawImage (img,rotation, (int)min.getX(), (int)(g.getClipBounds().getHeight()-this.min.getY()-hauteur), largeur, hauteur, null);
 	}

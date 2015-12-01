@@ -24,12 +24,12 @@ public class Fenetre extends JFrame{
 	/* Attributs */
 	
 	/**
-	 * Fond à ajouter à la fenêtre
+	 * Fond ï¿½ ajouter ï¿½ la fenï¿½tre
 	 */
 	Fond fond;
 	
 	/**
-	 * Taille de la fenêtre
+	 * Taille de la fenï¿½tre
 	 */
 	int hauteur;
 	int largeur;
@@ -37,22 +37,22 @@ public class Fenetre extends JFrame{
 	/* Constructeur */
 	
 	/**
-	 * Initialise une nouvelle fenêtre avec un fond vide
-	 * Applique la taille utile de l'écran
+	 * Initialise une nouvelle fenï¿½tre avec un fond vide
+	 * Applique la taille utile de l'ï¿½cran
 	 */
 	public Fenetre(){
 		fond = new Fond();
 		setContentPane(fond);
 		
-		//Récupérer taille "utile" de l'écran et la stock dans un rectangle
+		//Rï¿½cupï¿½rer taille "utile" de l'ï¿½cran et la stock dans un rectangle
 		GraphicsEnvironment graphicsEnvironment=GraphicsEnvironment.getLocalGraphicsEnvironment();
 		Rectangle maximumWindowBounds=graphicsEnvironment.getMaximumWindowBounds();
 		
 		//hauteur = (int)maximumWindowBounds.getHeight();
 		//largeur = (int)maximumWindowBounds.getWidth();
 		
-		hauteur = 600;
-		largeur = 800;
+		hauteur = 800;
+		largeur = 1000;
 		
 		setSize(largeur, hauteur);
 		setTitle("Kappa");
@@ -61,7 +61,7 @@ public class Fenetre extends JFrame{
 		setResizable(false);
 		setLocationRelativeTo(null);
 		
-		//Icone de la fenêtre
+		//Icone de la fenï¿½tre
 		try {
 		    URL url = getClass().getClassLoader().getResource ("./img/ico/icone.png");
 		    Image icone = ImageIO.read (url);
@@ -78,19 +78,19 @@ public class Fenetre extends JFrame{
 	/* GET */
 	
 	/**
-	 * Retourne le fond de l'écran
+	 * Retourne le fond de l'ï¿½cran
 	 * @return Fond
-	 * 		fond de l'écran
+	 * 		fond de l'ï¿½cran
 	 */
 	public Fond getFond(){
 		return fond;
 	}
 	
 	/**
-	 * Retourne le milieu de l'écran
-	 * Fait l'intermédiaire avec le fond
+	 * Retourne le milieu de l'ï¿½cran
+	 * Fait l'intermï¿½diaire avec le fond
 	 * @return Point
-	 * 		Milieu de la fenêtre
+	 * 		Milieu de la fenï¿½tre
 	 */
 	public Point getMilieu(){
 		return fond.getMilieu();
@@ -108,31 +108,31 @@ public class Fenetre extends JFrame{
 	
 	
 	
-	/* Méthodes */
+	/* Mï¿½thodes */
 	
 	/**
-	 * Efface le contenu de la fenêtre
-	 * Fait l'intermédiaire avec le fond
+	 * Efface le contenu de la fenï¿½tre
+	 * Fait l'intermï¿½diaire avec le fond
 	 */
 	public void effacer(){
 		fond.effacer();
 	}
 	
 	/**
-	 * Ajouter un nouvel élèment
-	 * Fait l'intermédiaire avec le fond
+	 * Ajouter un nouvel ï¿½lï¿½ment
+	 * Fait l'intermï¿½diaire avec le fond
 	 * @param  e Element
-	 * 		Elèment à ajouter
+	 * 		Elï¿½ment ï¿½ ajouter
 	 */
 	public void ajouter(Element e){
 		fond.ajouter(e);
 	}
 	
 	/**
-	 * Supprime un élèment de l'écran
-	 * Fait l'intermédiaire avec le fond
+	 * Supprime un ï¿½lï¿½ment de l'ï¿½cran
+	 * Fait l'intermï¿½diaire avec le fond
 	 * @param e Element
-	 * 		Elèment à supprimer
+	 * 		Elï¿½ment ï¿½ supprimer
 	 */
 	public void supprimer(Element e){
 		fond.supprimer(e);

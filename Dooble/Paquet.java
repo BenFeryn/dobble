@@ -100,6 +100,7 @@ public class Paquet{
 	
 	private void InitCartes(){
 		for(int i =0;i<Csts.NB_CARTES;i++){
+			melangeSymbole(matriceSymboles[i]);
 			cartes[i] = new Carte(i, matriceSymboles[i]);
 		}
 	}
