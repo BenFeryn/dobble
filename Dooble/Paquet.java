@@ -107,10 +107,8 @@ public class Paquet{
 	private void creationSymboles(){
 			/* Symboles 0 - 7 */
 			int indiceSymbole = 0;
-				for(int i=0;i<7;i++){
+				for(int i=0;i<8;i++){
 					for(int j = 0;j<7;j++){
-						System.out.println("i: "+i+" j: "+j);
-						System.out.println("i*7+j: "+(i*7+j));
 						matriceSymboles[i*7+j][indiceSymbole] = i;
 					}
 				}
@@ -132,7 +130,6 @@ public class Paquet{
 					//i=15;
 					for(int j=0;j<7;j++){
 						matriceSymboles[7*b+j][indiceSymbole] = i;
-						System.out.println(i);
 						if(j<6)
 							i++;
 						if(i==22)
@@ -227,5 +224,20 @@ public class Paquet{
 							i+=7;
 					}
 				}
+			
+			/* dernières cartes 49 - 56 */
+				int indiceCarte = 56;
+				indiceSymbole = 1;
+				for(int j=0;j<Csts.NB_SYMBOLES;j++){
+					if(indiceSymbole >= Csts.SYMBOLES_CARTE)
+						indiceSymbole = 1;
+					
+					if(j==8 || j==15 || j==22 || j==29 || j==36 || j==43 || j==50)
+						indiceCarte--;
+						
+					matriceSymboles[indiceCarte][indiceSymbole] = j;
+					indiceSymbole++;
+				}
+			
 		}
 }
