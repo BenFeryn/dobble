@@ -154,5 +154,16 @@ public class CarteG extends Element{
 			symboles[i] = new SymboleG(new Point(x, y), carte.getSymbole(i), 50, 50);
 		}
 	}
+	
+	public boolean hasSymbole(int i){
+		boolean temp = false;
+		for(int j=0;j<Csts.SYMBOLES_CARTE;j++){
+			if(symboles[j].getSymbole().getValeurSymbole() == i){
+				temp = true;
+				break;
+			}
+		}
+		return temp;
+	}
 
 }

@@ -43,6 +43,8 @@ public class Jeu {
 	/**
 	 * G�n�re un Paquet de carte, la fen�tre de jeu, la souris, les point o� se trouveront les cartes, m�lange les cartes et place les deux premi�res
 	 */
+	
+	private int score;
 	public Jeu(){
 		p = new Paquet();
 		f = new Fenetre();
@@ -58,6 +60,8 @@ public class Jeu {
 		index = -1;
 		initialisationIndexCartes();
 		initialiseCartes();
+		
+		score = 0;
 	}
 	
 	/**
@@ -105,6 +109,28 @@ public class Jeu {
 		}
 	}
 	
+	private int rechercheSymbole(int iCarte, int valSymbole){
+		int temp = 0;
+		for(int k=0;k<Csts.SYMBOLES_CARTE;k++){
+			if(cartes[iCarte].getSymboleG(k).getSymbole().getValeurSymbole() == valSymbole)
+				temp = k;
+		}
+		return temp;
+	}
+	
+	private void forceSelection(int iCarte, int valSymbole){
+		int j = 0;
+		System.out.println(cartes[iCarte].hasSymbole(valSymbole));
+		if(cartes[iCarte].hasSymbole(valSymbole)){
+			j = rechercheSymbole(iCarte, valSymbole);
+			cartes[iCarte].selectionne(j);
+		}else{
+			cartes[iCarte].selectionne(j);
+		}
+		System.out.println("i :"+iCarte+" j : "+j);
+		System.out.println("[!] Selection du symbole "+cartes[iCarte].getSymboleG(j).getSymbole().getValeurSymbole()+" de la carte "+(iCarte+1)+"("+cartes[iCarte].getCarte().getId()+")");
+	}
+	
 	/**
 	 * M�thode appel�e constamment par la m�thode joue pour selectionner les symbole s'il le faut
 	 * @see joue()
@@ -116,6 +142,12 @@ public class Jeu {
 					if(cartes[i].getSymboleG(j).intersection(souris.getPosition())){
 						System.out.println("[!] Selection du symbole "+cartes[i].getSymboleG(j).getSymbole().getValeurSymbole()+" de la carte "+(i+1)+"("+cartes[i].getCarte().getId()+")");
 						cartes[i].selectionne(j);
+						int iCarte;
+						if(i == 0)
+							iCarte = 1;
+						else
+							iCarte = 0;
+						forceSelection(iCarte, cartes[i].getSymboleSelectionne().getSymbole().getValeurSymbole());
 					}
 				}
 			}
@@ -146,7 +178,9 @@ public class Jeu {
 			cartes[i].setSelectionne(false);
 			cartes[i].getSymboleSelectionne().setSelectionne(false);
 		}
+		score++;
 		nouvelleCartePaquet();
+		System.out.println("Votre score est de "+score+" points !");
 	}
 
 	/**
@@ -158,6 +192,9 @@ public class Jeu {
 			cartes[i].getSymboleSelectionne().setSelectionne(false);
 			cartes[i].setSelectionne(false);
 		}
+		score--;
+		nouvelleCartePaquet();
+		System.out.println("Votre score est de "+score+" points !");
 	}
 
 	/**

@@ -51,8 +51,8 @@ public class Fenetre extends JFrame{
 		//hauteur = (int)maximumWindowBounds.getHeight();
 		//largeur = (int)maximumWindowBounds.getWidth();
 		
-		hauteur = 800;
-		largeur = 1000;
+		hauteur = 600;
+		largeur = 800;
 		
 		setSize(largeur, hauteur);
 		setTitle("Kappa");
