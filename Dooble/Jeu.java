@@ -45,6 +45,11 @@ public class Jeu {
 	 */
 	
 	private int score;
+	private Texte tScore;
+	
+	private Texte joueur;
+	private Texte paquet;
+	
 	public Jeu(){
 		p = new Paquet();
 		f = new Fenetre();
@@ -62,6 +67,8 @@ public class Jeu {
 		initialiseCartes();
 		
 		score = 0;
+		initTexte();
+		
 	}
 	
 	/**
@@ -166,6 +173,7 @@ public class Jeu {
 			}else{
 				mauvaisePaire();
 			}
+			refreshScore();
 		}
 	}
 
@@ -186,6 +194,7 @@ public class Jeu {
 	/**
 	 * M�thode appel� quand le joueur selectionne une fausse paire
 	 */
+	
 	private void mauvaisePaire() {
 		System.out.println("Kappa.");
 		for(int i=0;i<Csts.CARTE_FENETRE;i++){
@@ -211,5 +220,19 @@ public class Jeu {
 			f.ajouter(cartes[i]);
 		}
 		index++;
+	}
+	
+	public void initTexte(){
+		tScore = new Texte("Votre score : "+score, new Point(f.getLargeur()/4,f.getHauteur()/12),50);
+		f.ajouter(tScore);
+		
+		joueur = new Texte("Joueur", new Point((int)positionCartes[0].getX()-20,(int)positionCartes[0].getY()+cartes[0].getRayon()+10), 10);
+		paquet = new Texte("Paquet", new Point((int)positionCartes[1].getX()-20,(int)positionCartes[1].getY()+cartes[1].getRayon()+10), 10);
+		f.ajouter(joueur);
+		f.ajouter(paquet);
+	}
+	
+	public void refreshScore(){
+		tScore.setTexte("Votre score : "+score);
 	}
 }
