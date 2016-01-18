@@ -2,8 +2,8 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		//new Accueil();
-		Jeu j = new Jeu();
+		new Accueil();
+		/*Jeu j = new Jeu();
 		
 		while(true){
 			try {
@@ -13,6 +13,6 @@ public class Main {
 			}
 			
 			j.joue();
-		}
+		}*/
 	}
 }
