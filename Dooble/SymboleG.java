@@ -74,7 +74,7 @@ public class SymboleG extends Element{
 		//TODO G�n�rer l'image
 		
 		try {
-		    java.net.URL url = getClass().getClassLoader().getResource ("./img/smb/"+s.getLienImg()+".png");
+		    java.net.URL url = getClass().getClassLoader().getResource ("./img/smb/"+s.getLienImg((int)(Math.random()*4))+".png");
 		    //System.out.println(url.getPath());
 		    img = ImageIO.read (url);
 		}

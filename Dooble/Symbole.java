@@ -23,7 +23,7 @@ public class Symbole {
 		 * Peut être modifié.
 		 * @see setLienImg(String str)
 		 */
-		private String lienImg;
+		private String lienImg[];
 		
 		
 		/* Constructeur */
@@ -36,7 +36,9 @@ public class Symbole {
 		 */
 		public Symbole(int i) {
 			valeurSymbole = i;
-			lienImg = new String("Symbole_"+valeurSymbole);
+			lienImg = new String[4];
+			for(int j=0;j<4;j++)
+				lienImg[j] = new String("Symbole_"+valeurSymbole+"_"+j);
 		}
 		
 		public Symbole(Symbole s) {
@@ -62,8 +64,8 @@ public class Symbole {
 			 * @return lienImg String
 			 * 		Lien vers l'image du symbole
 			 */
-			public String getLienImg(){
-				return lienImg;
+			public String getLienImg(int i){
+				return lienImg[i];
 			}
 		
 		/* SET */
@@ -75,7 +77,8 @@ public class Symbole {
 			 */
 			public void setValeurSymbole(int t){
 				valeurSymbole = t;
-				lienImg = new String("Symbole_"+valeurSymbole);
+				for(int j=0;j<4;j++)
+					lienImg[j] = new String("Symbole_"+valeurSymbole+"_"+j);
 			}
 		
 	/* Méthodes */
