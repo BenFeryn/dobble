@@ -12,6 +12,7 @@ public class CarteG extends Element{
 	/* Attributs */
 	
 	private int rayon;
+	private static double pos[] = {0,0.6,0.75,0.4,0.7};
 	
 	/**
 	 * Symboles � afficher de la carte
@@ -149,9 +150,20 @@ public class CarteG extends Element{
 	
 	private void placerSymbole(){
 		for(int i=0;i<Csts.SYMBOLES_CARTE;i++){
-			int x = (int)((Math.cos(i*Math.PI/4)*(rayon*0.75))+getCentre().getX());
-			int y = (int)((Math.sin(i*Math.PI/4)*(rayon*0.75))+getCentre().getY());
+			int x,y=0;
+			int temp = 0;
+			if(i < 5){
+				temp = i;
+				if(i == 0)
+					temp = 0;
+			}else{
+				temp = i-4; 
+			}
+
+			x = (int)((Math.cos(i*Math.PI/3.5)*(rayon*pos[temp]))+getCentre().getX());
+			y = (int)((Math.sin(i*Math.PI/3.5)*(rayon*pos[temp]))+getCentre().getY());
 			symboles[i] = new SymboleG(new Point(x, y), carte.getSymbole(i), 50, 50);
+			
 		}
 	}
 	
