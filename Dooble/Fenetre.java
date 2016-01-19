@@ -10,6 +10,10 @@ import java.net.URL;
 
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JSeparator;
 
 /**
  * Cette classe sera la fenetre du jeu.
@@ -34,6 +38,10 @@ public class Fenetre extends JFrame{
 	int hauteur;
 	int largeur;
 	
+	private JMenuBar menu;
+	private JMenu option, timer;
+	private JMenuItem leave, retry, scoreboard, ten; 
+	
 	/* Constructeur */
 	
 	/**
@@ -41,6 +49,21 @@ public class Fenetre extends JFrame{
 	 * Applique la taille utile de l'�cran
 	 */
 	public Fenetre(){
+		
+		leave = new JMenuItem("quitter");
+		retry = new JMenuItem("Recommencer");
+		scoreboard = new JMenuItem("Tableau des scores");
+		ten = new JMenuItem("10 secondes");
+		timer = new JMenu("Changer le timer");
+		option = new JMenu("Options");
+		menu = new JMenuBar();
+		option.add(retry);option.add(new JSeparator());option.add(scoreboard);
+		option.add(timer);timer.add(ten);option.add(new JSeparator());option.add(leave);
+		menu.add(option);
+		
+		setJMenuBar(menu);
+		//yes
+		
 		fond = new Fond();
 		setContentPane(fond);
 		
